@@ -37,6 +37,14 @@ if ( ! defined( 'WPINC' ) ) {
  */
 define( 'WORDPRESS_SEO_INTERNAL_LINKING_VERSION', '1.0.0' );
 
+if ( ! defined( 'WORDPRESS_SEO_INTERNAL_LINKING_ADMIN_FILE_PATH' ) ) {
+	define( 'WORDPRESS_SEO_INTERNAL_LINKING_ADMIN_FILE_PATH', plugin_dir_path( __FILE__ ) . 'admin/' );
+}
+
+if ( ! defined( 'WORDPRESS_SEO_INTERNAL_LINKING_PLUGIN_URL' ) ) {
+	define( 'WORDPRESS_SEO_INTERNAL_LINKING_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+}
+
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-wordpress-seo-internal-linking-activator.php

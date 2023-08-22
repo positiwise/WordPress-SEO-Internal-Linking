@@ -100,4 +100,52 @@ class Wordpress_Seo_Internal_Linking_Public {
 
 	}
 
+	public function wp_sil_alter_content( $content ) {
+
+		$wp_sil_core_options = get_option( 'wp_sil_plugin_core_options' );
+
+		if( ! isset( $wp_sil_core_options['trubleshoot'] ) ){
+
+			$wp_sil_plugin_options = get_option( 'wp_sil_plugin_options' );
+
+			$the_content_parts = explode( "</p>", $content );
+			$considered_keywords = [];
+
+			for( $count = 0; $count < count( $the_content_parts ); $count++ ){
+
+				$number_of_keywords = 0;
+				
+				foreach( $wp_sil_plugin_options['keyword'] as $key => $keyword ){
+					
+					$pos = strpos( $the_content_parts[ $count ], $keyword );
+
+					if( $pos !== false && ! in_array( $keyword, $considered_keywords ) && $number_of_keywords < $wp_sil_core_options['count'] ){
+
+						array_push( $considered_keywords, $keyword );
+
+						$the_content = substr_replace( 
+											$the_content_parts[ $count ], 
+											"<a href='" . $wp_sil_plugin_options['link'][$key] . "' " . ( "_blank" == $wp_sil_core_options['target'] ? "target='_blank'" : "" ) . " >" . $keyword . "</a>",
+											$pos, 
+											strlen( $keyword ) 
+										);
+
+						$the_content_parts[ $count ] = $the_content;
+
+						$number_of_keywords++;
+
+					}
+
+				}
+
+			}
+
+			return implode( "</p>", $the_content_parts );
+
+		}
+		
+		return $content;
+
+	}
+
 }

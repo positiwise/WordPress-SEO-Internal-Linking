@@ -29,4 +29,24 @@
 	 * practising this, we should strive to set a better example in our own work.
 	 */
 
+	$(document ).ready( function(){
+		$( '.wp_sil_add_row a' ).click( function(){
+			var data_row_num = parseInt( $('.wp_sil_options_fields').attr( 'data-key' ) ) + 1 ;
+			console.log( data_row_num );
+			var row_html = "<tr class='wp_sil_setting_row' id='"+ data_row_num +"'><td><input class='wp_sil_keyword' name='wp_sil_plugin_options[keyword][" + data_row_num + "]' type='text' placeholder='Keyword' /></td><td><input class='wp_sil_link' name='wp_sil_plugin_options[link][" + data_row_num + "]' type='url' placeholder='Link URL' /></td><td><input class='wp_sil_priority' name='wp_sil_plugin_options[priority]["+ data_row_num +"]' type='checkbox' /></td><td><a class='wp_sil_remove_row button button-secondary' data-rem-id='" + data_row_num + "'>- Remove</a></td></tr>";
+
+			$( '.wp_sil_setting_table tbody' ).append( row_html );
+			
+			$('.wp_sil_options_fields').attr( 'data-key', data_row_num );
+
+		} );
+
+	} );
+
+	$( 'a.wp_sil_remove_row ' ).ready( function() {
+		$( 'a.wp_sil_remove_row ' ).click( function() {
+			$( 'tr#' + $( this ).data( 'rem-id' ) ).remove();
+		} );
+	} );
+
 })( jQuery );

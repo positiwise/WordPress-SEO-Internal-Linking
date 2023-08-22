@@ -2,3 +2,85 @@
  * All of the CSS for your admin-specific functionality should be
  * included in this file.
  */
+
+ .wp_sil_options_fields {
+    padding: 2rem;
+ }
+
+ .wp_sil_nevigation_links {
+    background: #fff;
+ }
+
+ .wp_sil_setting_row {
+   max-height: 25rem;
+    overflow: auto;
+ }
+
+ .wp_sil_nevigation_links .navigation_link_wrap {
+    display: inline-block;
+    padding: 1rem;
+    border-right: thin solid #e2e2e2;
+ }
+
+ .wp_sil_nevigation_links a,
+ .wp_sil_nevigation_links a:active,
+    .wp_sil_nevigation_links a:focus {
+    text-decoration: none;
+    box-shadow: none;
+ }
+
+ .wp_sil_options_fields {
+    background: #f4f4f4;
+ }
+
+ .wp_sil_options_fields .wp_sil_options_save_button {
+    margin-top: 1rem;
+ }
+
+ .wp_sil_add_row {
+    padding: 1rem 0;
+ }
+
+ .wp_sil_setting_rows {
+   margin-top: 1rem;
+}
+
+ .wp_sil_add_row a,
+ .wp_sil_add_row a:active
+    .wp_sil_add_row a:focus {
+    text-decoration: none;
+    box-shadow: none;
+    cursor: pointer;
+ }
+
+ .wp_sil_keyword{
+   width: 20rem;
+ }
+
+ .wp_sil_link{
+   width: 45rem;
+ }
+
+ .wp_sil_priority {
+   margin: 0 2em !important;
+ }
+
+ .wp_sil_setting_table th {
+   text-align: left;
+ }
+
+ .wp_sil_info_help {
+   display: inline-table;
+    color: #fff;
+    background-color: #000;
+    border-radius: 100%;
+    height: 20px;
+    width: 20px;
+    text-align: center;
+    cursor: pointer;
+ }
+
+ .wp_sil_core_settings td select,
+   .wp_sil_core_settings td input[type=number] {
+   width: 15rem;
+ }
