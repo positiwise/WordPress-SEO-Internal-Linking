@@ -117,6 +117,11 @@ class Wordpress_Seo_Internal_Linking {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-wordpress-seo-internal-linking-admin.php';
 
 		/**
+		 * The class responsible for showing settings in admin area.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/wordpress-seo-internal-linking-admin-settings.php';
+
+		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
@@ -157,6 +162,9 @@ class Wordpress_Seo_Internal_Linking {
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 
+		$plugin_admin_settings = new Wordpress_Seo_Internal_Linking_Admin_Settings();
+		$this->loader->add_action( 'admin_menu', $plugin_admin_settings, 'addAdminSettings' );
+
 	}
 
 	/**
@@ -172,6 +180,8 @@ class Wordpress_Seo_Internal_Linking {
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+
+		$this->loader->add_action( 'the_content', $plugin_public, 'wp_sil_alter_content' );
 
 	}
 
