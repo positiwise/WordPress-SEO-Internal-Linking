@@ -14,15 +14,13 @@ class Wordpress_Seo_Internal_Linking_Settings_Import_Export {
     }
 
     public function renderImportExport(){
+        if( "" !== $this->update_settings ){
+            $this->wpb_admin_notice_bar( $this->update_settings );
+        }
         ?>
         <div class="wp_sil_options_fields">
             <div class="wp_sil_import_fields">
                 <h3>Import Settings</h3>
-                <?php
-                    if( "" !== $this->update_settings ){
-                        $this->wpb_admin_notice_bar( $this->update_settings );
-                    }
-                ?>
                 <form name="import_settings" action="" method="post" id="wp_sil_import_settings_form">
                     <div class="wp_sil_import_settings_group">
                         <table>
@@ -85,7 +83,6 @@ class Wordpress_Seo_Internal_Linking_Settings_Import_Export {
             $data['data'] = $this->merge_sil_array( get_option( 'wp_sil_plugin_options' ), $data['data'] );
 
         }
-
 
         if( update_option( 'wp_sil_plugin_options', $data['data'] ) ) {
             return true;
