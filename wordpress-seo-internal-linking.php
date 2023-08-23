@@ -88,3 +88,11 @@ function run_wordpress_seo_internal_linking() {
 
 }
 run_wordpress_seo_internal_linking();
+
+add_filter('plugin_action_links_'.plugin_basename(__FILE__), 'add_plugin_page_settings_link');
+function add_plugin_page_settings_link( $links ) {
+	$links[] = '<a href="' .
+		admin_url( 'options-general.php?page=wp-seo-internal-linking-plugin' ) .
+		'">' . __('Settings') . '</a>';
+	return $links;
+}
