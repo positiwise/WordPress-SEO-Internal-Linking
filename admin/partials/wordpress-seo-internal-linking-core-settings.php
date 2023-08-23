@@ -3,10 +3,11 @@
 class WordpressSeoInternalLinkingCoreSettings
 {
     private $wp_sil_core_options;
+    private $update_settings;
 
     public function __construct() {
         if( isset( $_POST['wp_sil_core_settings'] ) ) {
-            $this->saveWpSilOptions( $_POST['wp_sil_core_settings'] );
+            $this->update_settings = $this->saveWpSilOptions( $_POST['wp_sil_core_settings'] );
         }
 
         $this->wp_sil_core_options = get_option( 'wp_sil_plugin_core_options' );
@@ -18,6 +19,10 @@ class WordpressSeoInternalLinkingCoreSettings
         $trubleshoot    = ( isset( $this->wp_sil_core_options['trubleshoot'] ) ) ? $this->wp_sil_core_options['trubleshoot'] : "";
         $target         = ( isset( $this->wp_sil_core_options['target'] ) ) ? $this->wp_sil_core_options['target'] : "";
         $count          = ( isset( $this->wp_sil_core_options['count'] ) ) ? $this->wp_sil_core_options['count'] : "2";
+
+        if( "" !== $this->update_settings ){
+            $this->wpb_admin_notice_bar( $this->update_settings );
+        }
 
         ?>
         <div class="wrap">
@@ -68,15 +73,32 @@ class WordpressSeoInternalLinkingCoreSettings
     }
 
     public function saveWpSilOptions( $coreOptions ) {
-        if( update_option( 'wp_sil_plugin_core_options', $coreOptions ) ) {
-            add_action( 'admin_notices', function() {
-                ?>
-                <div class="notice notice-success is-dismissible">
-                    <p><?php _e( 'Settings Saved Successfully!', 'wordpress-seo-internal-linking' ); ?></p>
-                </div>
-                <?php
-            } );
+
+        if( get_option( 'wp_sil_plugin_core_options' ) === $coreOptions ) {
+            return true;
         }
+
+        if( update_option( 'wp_sil_plugin_core_options', $coreOptions ) ) {
+            return true;
+        }
+
+        return false;
+
+    }
+
+    public function wpb_admin_notice_bar( $action ) {
+        if( true === $action ){
+            echo '<div class="notice notice-success is-dismissible">
+                <p>Settings has been saved successfully!!</p>
+                </div>';
+        }
+
+        if( false === $action ){
+            echo '<div class="notice notice-error is-dismissible">
+                <p>Some Error Occured! Please try again!</p>
+                </div>';
+        }
+
     }
 
 }
