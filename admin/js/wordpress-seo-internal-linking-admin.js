@@ -41,6 +41,19 @@
 
 		} );
 
+		$( '#wp_sil_import_settings_form' ).submit( 'on', function( e ) {
+			var cnf_import = confirm( 'Are you sure you want to run import? It may alter the data you have saved. This action is irreversible' );
+
+			if( false === cnf_import ){
+				e.preventDefault();
+			}
+
+		} );
+
+		$( '.copy-export-data' ).click( 'on', function(){
+			navigator.clipboard.writeText( $( "#wp_sil_plugin_options" ).val().replace(/'/g, '"') );
+		} );
+
 	} );
 
 	$( 'a.wp_sil_remove_row ' ).ready( function() {

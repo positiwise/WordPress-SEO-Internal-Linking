@@ -84,3 +84,12 @@
    .wp_sil_core_settings td input[type=number] {
    width: 15rem;
  }
+
+ #wp_sil_import_settings_form tr,
+ #wp_sil_options_form tr {
+   padding: 1em 0;
+ }
+
+ textarea {
+   resize: none;
+ }
