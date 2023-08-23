@@ -4,10 +4,11 @@ class WordpressSeoInternalLinkingKeywords
 {
 
     private $wp_sil_options;
+    private $update_settings;
 
     public function __construct() {
         if( isset( $_POST['wp_sil_plugin_options'] ) ) {
-            $this->saveWpSilOptions( $_POST['wp_sil_plugin_options'] );
+            $this->update_settings = $this->saveWpSilOptions( $_POST['wp_sil_plugin_options'] );
         }
 
         $this->wp_sil_options = get_option( 'wp_sil_plugin_options' );
@@ -20,6 +21,10 @@ class WordpressSeoInternalLinkingKeywords
         $priority = ( isset( $options['priority'] ) && !empty( $options['priority'] ) ) ? $options['priority'] : [];
 
         $last_key = array_key_last( $keywords );
+
+        if( "" !== $this->update_settings ){
+            $this->wpb_admin_notice_bar( $this->update_settings );
+        }
 
         ?>
         <div class="wrap">
@@ -78,6 +83,41 @@ class WordpressSeoInternalLinkingKeywords
     }
 
     public function saveWpSilOptions( $options ){
-        update_option( 'wp_sil_plugin_options', $options );
+
+        if( ! isset( $options['keyword'] ) || 
+            ! isset( $options['link'] ) ||
+            ! isset( $options['priority'] )
+        ) {
+            return 'improper';
+        }
+
+        if( update_option( 'wp_sil_plugin_options', $options ) ) {
+            return true;
+        }
+
+        return false;
+
     }
+
+    public function wpb_admin_notice_bar( $action ) {
+        if( true === $action ){
+            echo '<div class="notice notice-success is-dismissible">
+                <p>Keywords have been saved successfully!!</p>
+                </div>';
+        }
+
+        if( false === $action ){
+            echo '<div class="notice notice-warning is-dismissible">
+                <p>Keywords are identical to existing data!</p>
+                </div>';
+        }
+
+        if( 'improper' === $action ){
+            echo '<div class="notice notice-error is-dismissible">
+                <p>Please verify the data once, it seems the data is not properly formated!</p>
+                </div>';
+        }
+
+    }
+
 }
