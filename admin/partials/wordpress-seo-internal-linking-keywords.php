@@ -40,26 +40,26 @@ class WordpressSeoInternalLinkingKeywords
                             <?php if( "" === $options ){ ?>
                             <tr class="wp_sil_setting_row">
                                 <td>
-                                    <input class='wp_sil_keyword' name='wp_sil_plugin_options[keyword][0]' type='text' placeholder='Keyword' />
+                                    <input class='wp_sil_keyword' autocomplete="off" name='wp_sil_plugin_options[keyword][0]' type='text' placeholder='Keyword' />
                                 </td>
                                 <td>
-                                    <input class='wp_sil_link' name='wp_sil_plugin_options[link][0]' type='url' placeholder='Link URL' />
+                                    <input class='wp_sil_link' autocomplete="off" name='wp_sil_plugin_options[link][0]' type='url' placeholder='Link URL' />
                                 </td>
                                 <td>
-                                    <input class='wp_sil_priority' name='wp_sil_plugin_options[priority][0]' type='checkbox' />
+                                    <input class='wp_sil_priority' autocomplete="off" name='wp_sil_plugin_options[priority][0]' type='checkbox' />
                                 </td>
                             </tr>
                             <?php } ?>
                             <?php foreach( $keywords as $key => $word ) { ?>
                                 <tr class="wp_sil_setting_row" id="<?php echo $key; ?>">
                                     <td>
-                                        <input class='wp_sil_keyword' name='wp_sil_plugin_options[keyword][<?php echo $key; ?>]' type='text' placeholder='Keyword' value='<?php echo $keywords[$key]; ?>' />
+                                        <input class='wp_sil_keyword' autocomplete="off" name='wp_sil_plugin_options[keyword][<?php echo $key; ?>]' type='text' placeholder='Keyword' value='<?php echo $keywords[$key]; ?>' />
                                     </td>
                                     <td>
-                                        <input class='wp_sil_link' name='wp_sil_plugin_options[link][<?php echo $key; ?>]' type='url' placeholder='Link URL' value='<?php echo $links[$key]; ?>' />
+                                        <input class='wp_sil_link' autocomplete="off" name='wp_sil_plugin_options[link][<?php echo $key; ?>]' type='url' placeholder='Link URL' value='<?php echo $links[$key]; ?>' />
                                     </td>
                                     <td>
-                                        <input class='wp_sil_priority' name='wp_sil_plugin_options[priority][<?php echo $key; ?>]' type='checkbox' <?php echo ( isset( $priority[$key] ) && "on" == $priority[$key] ) ? 'checked=checked' : ''; ?> />
+                                        <input class='wp_sil_priority' autocomplete="off" name='wp_sil_plugin_options[priority][<?php echo $key; ?>]' type='checkbox' <?php echo ( isset( $priority[$key] ) && "on" == $priority[$key] ) ? 'checked=checked' : ''; ?> />
                                     </td>
                                     <?php if( 0 !== $key ) { ?>
                                         <td>

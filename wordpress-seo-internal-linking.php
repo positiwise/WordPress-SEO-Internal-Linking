@@ -45,6 +45,10 @@ if ( ! defined( 'WORDPRESS_SEO_INTERNAL_LINKING_PLUGIN_URL' ) ) {
 	define( 'WORDPRESS_SEO_INTERNAL_LINKING_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 }
 
+if ( ! defined( 'BUYWP_WEBSITE_LINK' ) ) {
+	define( 'BUYWP_WEBSITE_LINK', "https://buywp.com/" );
+}
+
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-wordpress-seo-internal-linking-activator.php
