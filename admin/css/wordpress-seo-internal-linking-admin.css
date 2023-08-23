@@ -93,3 +93,7 @@
  textarea {
    resize: none;
  }
+
+ .buywp_branding img{
+   width: 100px;
+ }
