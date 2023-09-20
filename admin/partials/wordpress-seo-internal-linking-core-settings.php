@@ -16,7 +16,7 @@ class WordpressSeoInternalLinkingCoreSettings
 
     public function renderCoreSettings() {
 
-        $trubleshoot    = ( isset( $this->wp_sil_core_options['trubleshoot'] ) ) ? $this->wp_sil_core_options['trubleshoot'] : "";
+        $troubleshoot    = ( isset( $this->wp_sil_core_options['troubleshoot'] ) ) ? $this->wp_sil_core_options['troubleshoot'] : "";
         $target         = ( isset( $this->wp_sil_core_options['target'] ) ) ? $this->wp_sil_core_options['target'] : "";
         $count          = ( isset( $this->wp_sil_core_options['count'] ) ) ? $this->wp_sil_core_options['count'] : "2";
 
@@ -33,10 +33,10 @@ class WordpressSeoInternalLinkingCoreSettings
                         
                             <tr class="wp_sil_setting_row">
                                 <th>
-                                    <div>Enable Trubleshooting?</div>
+                                    <div>Enable Troubleshooting?</div>
                                 </th>
                                 <td>
-                                    <input type="checkbox" name="wp_sil_core_settings[trubleshoot]" <?php echo ( "on" == $trubleshoot ) ? 'checked="checked"' : "" ; ?> />
+                                    <input type="checkbox" name="wp_sil_core_settings[troubleshoot]" <?php echo ( "on" == $troubleshoot ) ? 'checked="checked"' : "" ; ?> />
                                     <span class="wp_sil_info_help" title="This will temporarily remove all linkings until unchecked and saved.">?</span>
                                 </td>
                             </tr>
