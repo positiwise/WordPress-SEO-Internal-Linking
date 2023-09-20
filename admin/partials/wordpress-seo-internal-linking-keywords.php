@@ -63,7 +63,7 @@ class WordpressSeoInternalLinkingKeywords
                                     </td>
                                     <?php if( 0 !== $key ) { ?>
                                         <td>
-                                            <a class='wp_sil_remove_row button button-secondary' data-rem-id='<?php echo $key; ?>'>- Remove</a>
+                                            <a class='wp_sil_remove_row button button-secondary' data-rem-id='<?php echo $key; ?>'> Remove</a>
                                         </td>
                                     <?php } ?>
                                 </tr>
@@ -85,16 +85,16 @@ class WordpressSeoInternalLinkingKeywords
     public function saveWpSilOptions( $options ){
 
         if( ! isset( $options['keyword'] ) || 
-            ! isset( $options['link'] ) ||
-            ! isset( $options['priority'] )
+            ! isset( $options['link'] )  //|| 
+        //    ! isset( $options['priority'] )
         ) {
             return 'improper';
         }
 
-        if( update_option( 'wp_sil_plugin_options', $options ) ) {
+        elseif( update_option( 'wp_sil_plugin_options', $options ) ) {
             return true;
         }
-
+        
         return false;
 
     }
